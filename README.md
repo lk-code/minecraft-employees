@@ -3,6 +3,14 @@ Minecraft Employees adds NPC workers to your server. Assign tasks like chopping 
 
 ## local build
 
+make sure that the java JDK is installed and then checkout the repository and run the following command in the root directory of the project: 
+
+```
+./gradlew build
+```
+
+this will create the mod jar file in the `/build/libs` directory.
+
 ## Forge README
 
 Source installation information for modders
