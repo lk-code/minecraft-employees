@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mcemployees:item/employee_wood_chooper_spawn_egg"
+  }
+}

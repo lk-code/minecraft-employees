@@ -3,6 +3,7 @@ package dev.lkcode.mcemployees;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.Villager;
@@ -52,6 +53,8 @@ public class McEmployees {
                         if (villager != null) {
                             BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
                             villager.moveTo(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F);
+                            villager.setCustomName(Component.translatable("entity.mcemployees.employee_wood_chooper"));
+                            villager.setCustomNameVisible(true);
                             context.getLevel().addFreshEntity(villager);
                             context.getItemInHand().shrink(1);
                         }
@@ -59,7 +62,6 @@ public class McEmployees {
                     return InteractionResult.SUCCESS;
                 }
             });
-
 
     public McEmployees() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
