@@ -1,6 +1,7 @@
 package dev.lkcode.mcemployees;
 
 import com.mojang.logging.LogUtils;
+import dev.lkcode.mcemployees.entities.WoodChooperEmployeeNpc;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -48,18 +49,7 @@ public class McEmployees {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)) {
                 @Override
                 public InteractionResult useOn(UseOnContext context) {
-                    if (!context.getLevel().isClientSide) {
-                        Villager villager = EntityType.VILLAGER.create(context.getLevel());
-                        if (villager != null) {
-                            BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
-                            villager.moveTo(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F);
-                            villager.setCustomName(Component.translatable("entity.mcemployees.employee_wood_chooper"));
-                            villager.setCustomNameVisible(true);
-                            context.getLevel().addFreshEntity(villager);
-                            context.getItemInHand().shrink(1);
-                        }
-                    }
-                    return InteractionResult.SUCCESS;
+                    return WoodChooperEmployeeNpc.spawn(context);
                 }
             });
 
